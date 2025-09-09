@@ -1,21 +1,22 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  
-  const roles = [
-    'Full Stack Developer',
-    'React Developer',
-    'Next.js Developer',
-    'Frontend Developer',
-    'Backend Developer'
-  ];
 
   useEffect(() => {
+    const roles = [
+      'Full Stack Developer',
+      'React Developer',
+      'Next.js Developer',
+      'Frontend Developer',
+      'Backend Developer'
+    ];
+
     const currentRole = roles[currentIndex];
     const timeout = setTimeout(() => {
       if (!isDeleting) {
@@ -35,7 +36,7 @@ const Header: React.FC = () => {
     }, isDeleting ? 50 : 100);
 
     return () => clearTimeout(timeout);
-  }, [displayText, currentIndex, isDeleting, roles]);
+  }, [displayText, currentIndex, isDeleting]);
 
   return (
     <header id="home" className="bg-slate-900 min-h-screen flex items-center justify-center relative overflow-hidden pt-24">
@@ -60,9 +61,11 @@ const Header: React.FC = () => {
         <div className="mb-12 flex justify-center">
           <div className="relative">
             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-blue-400/50 shadow-2xl shadow-blue-500/25 hover:border-blue-400 transition-all duration-300 hover:scale-105">
-              <img 
-                src="/profile.jpg" 
-                alt="Vaya Shyam - Full Stack Developer" 
+              <Image
+                src="/profile.jpg"
+                alt="Vaya Shyam - Full Stack Developer"
+                width={320}
+                height={320}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -72,7 +75,7 @@ const Header: React.FC = () => {
         </div>
 
         <div className="mb-8">
-          
+
           <div className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-300 mb-8 h-16 flex items-center justify-center">
             <span className="bg-gradient-to-r from-blue-400 to-slate-400 bg-clip-text text-transparent">
               {displayText}
@@ -81,7 +84,7 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        
+
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a

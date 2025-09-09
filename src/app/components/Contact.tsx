@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
       
       setNotification({
         type: 'success',
-        message: 'Message sent successfully! I\'ll get back to you soon.'
+        message: 'Message sent successfully! I&apos;ll get back to you soon.'
       });
       
       // Reset form
@@ -62,12 +62,12 @@ const Contact: React.FC = () => {
         subject: '',
         message: ''
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       let errorMessage = 'Failed to send message. ';
-      if (error.message) {
+      if (error instanceof Error && error.message) {
         errorMessage += error.message;
-      } else if (error.text) {
-        errorMessage += error.text;
+      } else if (typeof error === 'object' && error !== null && 'text' in error) {
+        errorMessage += (error as { text: string }).text;
       } else {
         errorMessage += 'Please try again or contact me directly.';
       }
@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
             Get In Touch
           </h2>
           <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+            Have a project in mind or want to collaborate? I&apos;d love to hear from you!
           </p>
         </div>
 

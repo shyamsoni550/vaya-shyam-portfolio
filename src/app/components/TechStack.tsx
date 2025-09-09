@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const TechStack: React.FC = () => {
   const languages = [
@@ -39,7 +40,7 @@ const TechStack: React.FC = () => {
         <div className="absolute bottom-32 left-40 w-20 h-20 bg-blue-600 rounded-lg animate-pulse delay-1000"></div>
         <div className="absolute bottom-20 right-20 w-28 h-28 bg-slate-500 rounded-full animate-pulse delay-300"></div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="text-4xl md:text-6xl font-bold mb-16 text-center bg-gradient-to-r from-blue-400 to-slate-300 bg-clip-text text-transparent">
           Tech Stack
@@ -53,12 +54,12 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {languages.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
+                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>
           </div>
-          
+
           <div className="bg-slate-700/30 backdrop-blur-lg p-8 rounded-xl border border-slate-600 hover:border-blue-500/50 transition-all duration-300 hover:bg-slate-700/50">
             <h3 className="text-xl font-bold mb-6 text-center text-blue-400 flex items-center justify-center gap-2">
               <span className="text-2xl">🎨</span>
@@ -67,12 +68,12 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {frontend.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
+                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>
           </div>
-          
+
           <div className="bg-slate-700/30 backdrop-blur-lg p-8 rounded-xl border border-slate-600 hover:border-blue-500/50 transition-all duration-300 hover:bg-slate-700/50">
             <h3 className="text-xl font-bold mb-6 text-center text-blue-400 flex items-center justify-center gap-2">
               <span className="text-2xl">🗄️</span>
@@ -81,12 +82,12 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {databases.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
+                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>
           </div>
-          
+
           <div className="bg-slate-700/30 backdrop-blur-lg p-8 rounded-xl border border-slate-600 hover:border-blue-500/50 transition-all duration-300 hover:bg-slate-700/50">
             <h3 className="text-xl font-bold mb-6 text-center text-blue-400 flex items-center justify-center gap-2">
               <span className="text-2xl">🛠️</span>
@@ -95,7 +96,7 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {tools.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
+                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>

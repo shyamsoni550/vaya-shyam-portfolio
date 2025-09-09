@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: 'about', label: 'About' },
     { id: 'techstack', label: 'Tech Stack' },
     { id: 'experience', label: 'Experience' },
@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
     { id: 'projects', label: 'Projects' },
     { id: 'certifications', label: 'Certifications' },
     { id: 'contact', label: 'Contact' }
-  ];
+  ], []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 shadow-lg z-50">
@@ -55,11 +55,11 @@ const Navbar: React.FC = () => {
         <ul className="hidden md:flex space-x-8">
           {navItems.map((item) => (
             <li key={item.id}>
-              <button 
+              <button
                 onClick={() => scrollToSection(item.id)}
                 className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
-                  activeSection === item.id 
-                    ? 'text-blue-400' 
+                  activeSection === item.id
+                    ? 'text-blue-400'
                     : 'text-slate-300 hover:text-white'
                 }`}
               >
@@ -95,8 +95,8 @@ const Navbar: React.FC = () => {
                 <button
                   onClick={() => scrollToSection(item.id)}
                   className={`block w-full text-left px-6 py-3 text-sm font-medium transition-all duration-300 hover:bg-slate-700/50 hover:text-blue-400 ${
-                    activeSection === item.id 
-                      ? 'text-blue-400 bg-slate-700/30' 
+                    activeSection === item.id
+                      ? 'text-blue-400 bg-slate-700/30'
                       : 'text-slate-300'
                   }`}
                   style={{ animationDelay: `${index * 50}ms` }}
