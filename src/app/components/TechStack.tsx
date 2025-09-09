@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 const TechStack: React.FC = () => {
   const languages = [
@@ -54,7 +53,7 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {languages.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
+                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>
@@ -68,7 +67,7 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {frontend.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
+                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>
@@ -82,7 +81,7 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {databases.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
+                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>
@@ -96,7 +95,7 @@ const TechStack: React.FC = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               {tools.map((tech, index) => (
                 <div key={tech.name} className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Image src={tech.badge} alt={tech.name} width={120} height={20} className="rounded-md shadow-lg" />
+                  <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
                 </div>
               ))}
             </div>
