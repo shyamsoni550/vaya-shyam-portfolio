@@ -1,10 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import NextLink from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+
+  const router = useRouter();
 
   const navItems = useMemo(() => [
     { id: 'about', label: 'About' },
@@ -13,7 +18,9 @@ const Navbar: React.FC = () => {
     { id: 'education', label: 'Education' },
     { id: 'projects', label: 'Projects' },
     { id: 'certifications', label: 'Certifications' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'contact', label: 'Contact' },
+    { id: 'resume', label: 'Resume' }
+    
   ], []);
 
   const scrollToSection = (id: string) => {
@@ -22,6 +29,16 @@ const Navbar: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false); // Close mobile menu after navigation
     }
+  };
+
+  const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/resume/vaya_shyam_resume.pdf';
+    link.setAttribute('download', 'vaya_shyam_resume.pdf');
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // Track active section based on scroll position
@@ -47,8 +64,20 @@ const Navbar: React.FC = () => {
     <nav className="fixed top-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 shadow-lg z-50">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-slate-300 bg-clip-text text-transparent">
-          Vaya Shyam
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-400/50 hover:border-blue-400 transition-all duration-300 hover:scale-105">
+            <Image
+              src="/images/profile.jpg"
+              alt="Vaya Shyam - Profile"
+              width={40}
+              height={40}
+              className="w-full h-full object-cover"
+              onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}
+            />
+          </div>
+          <div className="text-lg font-bold bg-gradient-to-r from-blue-400 to-slate-300 bg-clip-text text-transparent">
+            Vaya Shyam
+          </div>
         </div>
 
         {/* Desktop Navigation */}
@@ -56,11 +85,21 @@ const Navbar: React.FC = () => {
           {navItems.map((item) => (
             <li key={item.id}>
               <button
-                onClick={() => scrollToSection(item.id)}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-blue-400 ${
-                  activeSection === item.id
-                    ? 'text-blue-400'
-                    : 'text-slate-300 hover:text-white'
+                onClick={() => {
+                  if (item.id === 'resume') {
+                    downloadResume();
+                  } else {
+                    scrollToSection(item.id);
+                  }
+                }}
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                  item.id === 'resume'
+                    ? 'bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-2'
+                    : `hover:text-blue-400 ${
+                        activeSection === item.id
+                          ? 'text-blue-400'
+                          : 'text-slate-300 hover:text-white'
+                      }`
                 }`}
               >
                 {item.label}
@@ -93,11 +132,22 @@ const Navbar: React.FC = () => {
             {navItems.map((item, index) => (
               <li key={item.id}>
                 <button
-                  onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-6 py-3 text-sm font-medium transition-all duration-300 hover:bg-slate-700/50 hover:text-blue-400 ${
-                    activeSection === item.id
-                      ? 'text-blue-400 bg-slate-700/30'
-                      : 'text-slate-300'
+                  onClick={() => {
+                    if (item.id === 'resume') {
+                      downloadResume();
+                    } else {
+                      scrollToSection(item.id);
+                    }
+                    setIsMenuOpen(false);
+                  }}
+                  className={`block w-full text-left px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                    item.id === 'resume'
+                      ? 'bg-blue-500 hover:bg-blue-600 text-white rounded-lg mx-2 my-1'
+                      : `hover:bg-slate-700/50 hover:text-blue-400 ${
+                          activeSection === item.id
+                            ? 'text-blue-400 bg-slate-700/30'
+                            : 'text-slate-300'
+                        }`
                   }`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
@@ -113,3 +163,4 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
