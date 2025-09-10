@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 
 
 const Header: React.FC = () => {
@@ -42,12 +41,7 @@ const Header: React.FC = () => {
     return () => clearTimeout(timeout);
   }, [displayText, currentIndex, isDeleting]);
 
-  const handleLogoClick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+
 
   return (
     <header
@@ -75,7 +69,7 @@ const Header: React.FC = () => {
           <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             <span className="text-2xl md:text-4xl lg:text-5xl font-semibold text-slate-300 mb-8 h-16 flex flex-col items-center justify-center cursor-pointer">
               <span className="bg-gradient-to-r from-blue-400 to-slate-400 bg-clip-text text-transparent mb-4">
-                I'm Vaya Shyam, a passionate
+                I&apos;m Vaya Shyam, a passionate
               </span>
               <span className="bg-gradient-to-r from-blue-400 to-slate-400 bg-clip-text text-transparent">
                 {displayText}

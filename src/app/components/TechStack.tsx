@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const TechStack: React.FC = () => {
   const techStack = {
@@ -57,7 +58,7 @@ const TechStack: React.FC = () => {
                     className="hover:scale-110 transition-transform duration-200 hover:drop-shadow-lg"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <img src={tech.badge} alt={tech.name} className="rounded-md shadow-lg" />
+                    <Image src={tech.badge} alt={tech.name} width={100} height={20} unoptimized className="rounded-md shadow-lg" />
                   </div>
                 ))}
               </div>

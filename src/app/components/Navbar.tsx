@@ -1,15 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import NextLink from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-
-  const router = useRouter();
 
   const navItems = useMemo(() => [
     { id: 'about', label: 'About' },
